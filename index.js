@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import './src/database/database.js'
 import habitacionesRouter from './src/routes/habitacion.routes.js';
+import usuariosRouter from './src/routes/usuarios.routes.js'
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/api', habitacionesRouter);
+app.use('/api', usuariosRouter)
 
 
 app.set('puerto', process.env.PORT || 4000);
