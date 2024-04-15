@@ -39,6 +39,8 @@ export const updateUsuario = async (req, res) => {
   try {
     const usuarioBuscado = await Usuario.findById(id);
     if (!usuarioBuscado) return res.status(404).json({ message: "Usuario no encontrado" });
+    console.log(usuarioBuscado)
+    usuario.password = usuarioBuscado.password;
     await Usuario.findByIdAndUpdate(id, usuario);
     res.status(200).json({ message: "Usuario actualizado" });
   } catch (error) {
