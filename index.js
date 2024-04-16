@@ -11,7 +11,10 @@ import reservasRouter from './src/routes/reservas.routes.js'
 
 const app = express();
 
-app.use(cors());  
+app.use(cors({
+    origin: 'https://rollinghotegrupo3.netlify.app/',
+    optionsSuccessStatus: 200 
+  }));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
