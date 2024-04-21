@@ -23,8 +23,9 @@ Se implementará el registro y el inicio de sesión utilizando Node.js y Express
 ## Grupo N3
 
 Integrantes:
-- [Nombre del Integrante 1](enlace_perfil_github)
-- [Nombre del Integrante 2](enlace_perfil_github)
-- [Nombre del Integrante 3](enlace_perfil_github)
-
+- [Nicolas Lagoria Almeda](https://github.com/nicolasalmeda)
+- [Enzo Javier Gonzalez](https://github.com/Enzogz98)
+- [Maximiliano Gomez](https://github.com/MaxiGomez94)
+- [Lucia Barraza](https://github.com/mluchyb)
+- [Thiago Bautista Diaz](https://github.com/BautistaRC2023)
 
