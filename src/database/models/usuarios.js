@@ -7,14 +7,19 @@ const usuarioSchema = new Schema({
     required: true,
     unique: true,
     lowercase: true,
-    trim: true
+    trim: true,
+    validate: {
+        validator: (value) =>{
+          const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+          return pattern.test(value);
+        },
+        message: props => `${props.value} no es un email valido.`,
+    },
   },
   password: {
     type: String,
     required: true,
     select: false,
-    minLength: 5,
-    maxLength: 20
   },
   nombre: {
     type: String,
