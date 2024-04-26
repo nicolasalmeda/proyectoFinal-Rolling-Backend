@@ -22,9 +22,11 @@ export const getUsuario = async (req, res) => {
 };
 
 export const createUsuario = async (req, res) => {
-  const usuario = req.body;
-  const newUsuario = new Usuario(usuario);
   try {
+    const usuarioBuscado = await Usuario.findOne({email: req.body.email});
+    if (usuarioBuscado) return res.status(409).json({ message: "Usuario ya existe" });
+    const usuario = req.body;
+    const newUsuario = new Usuario(usuario);
     await newUsuario.save();
     res.status(201).json(newUsuario);
   } catch (error) {
@@ -65,19 +67,14 @@ export const loginUsuario = async (req, res) => {
   
     try {
       const usuario = await Usuario.findOne({ email }).select('+password');
-  
       if (!usuario) {
         return res.status(404).json({ message: 'Usuario no encontrado' });
       }
-  
-      const passwordValida = await usuario.comparePassword(password);
-  
+      const passwordValida = await usuario.comparePassword(password); 
       if (!passwordValida) {
         return res.status(401).json({ message: 'Credenciales inválidas' });
-      }
-  
+      }  
     const token = jwt.sign({ id: usuario._id, rol:usuario.rol }, 'secreto', { expiresIn: '1h' });
-
     res.status(200).json({ id: usuario._id, rol:usuario.rol, token });
     } catch (error) {
       res.status(500).json({ message: error.message });
